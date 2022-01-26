@@ -15,13 +15,13 @@ import {
 
           console.error("Customer is not found!!!!");
   
-          NotFoundError("Customer does not exist!!!");
+          throw NotFoundError("Customer does not exist!!!");
 
         } else if (customer && (!customer.emailId || !customer.phone)) {
             
           console.error("Customer is not found!!!!");
   
-          CustomerEmailOrPhoneDoesnNotExist(
+          throw CustomerEmailOrPhoneDoesnNotExist(
             "Customer doesnot have email or phone number!!!"
           );
         } else {
