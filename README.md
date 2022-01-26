@@ -48,7 +48,7 @@ $ docker system prune                           # remove all the images from doc
 
 ## Test Commands
 npm run test 
-Note : Test cases are generated indivitually on each subgraphg. So to generate test cases go to a particular subgraph 
+Note : Test cases are generated indivitually on each subgraphg. So to generate test cases please go to particular subgraph and execute the command
 for example: cd subgraphs/order
              npm run test
 
@@ -321,6 +321,8 @@ List of all services
   }
 }`
 
+- Note : Delivery Date should be in YYYY-MM-DD 
+
 - Response Json body for the above query (Example):
 
 ```json
@@ -387,6 +389,41 @@ List of all services
 }
 
 ```
+
+## Mutation to create an order  -- when product items are less than 1 in the request query
+
+- Response Json body for the above query (Example):
+
+```json
+
+{
+  "errors": [
+    {
+      "message": "ValidationError: \"products\" must contain at least 1 items",
+      "extensions": {
+        "code": "400",
+        "serviceName": "order",
+        "exception": {
+          "message": "ValidationError: \"products\" must contain at least 1 items",
+          "locations": [
+            {
+              "line": 1,
+              "column": 10
+            }
+          ],
+          "path": [
+            "order"
+          ]
+        }
+      }
+    }
+  ],
+  "data": {
+    "order": null
+  }
+}
+```
+
 
 ## Mutation to create an order  -- when a customer doesnt have email or phone number
 
