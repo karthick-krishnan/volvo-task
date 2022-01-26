@@ -90,7 +90,9 @@ List of all services
 
 ## Customer - Query to get the list of customers
 
-- Query: `query Query {
+- Query:
+
+ `query Query {
   getAllCustomers {
     address
     customerId
@@ -128,7 +130,9 @@ List of all services
 
 ## Product - Query to get the list of products
 
-- Query: `query Query {
+- Query: 
+
+`query Query {
   allProducts {
     price
     name
@@ -188,7 +192,9 @@ List of all services
 
 ## Order - Query to get the order with the orderId
 
-- Query: `query Order($orderId: ID!) {
+- Query: 
+
+`query Order($orderId: ID!) {
   order(orderId: "0571533b-e535-45ff-8c66-13c7057c4e68") {
     customer {
       address
@@ -234,7 +240,9 @@ List of all services
 
 ## Product - Query to get the product by product id
 
-- Query: `query Order($orderId: ID!, $prodId: ID!) {
+- Query:
+
+ `query Order($orderId: ID!, $prodId: ID!) {
   product(prodId: "3aec7e8a-9c9e-493e-9b1b-abb33d4a5ca8") {
     name
     price
@@ -262,7 +270,9 @@ List of all services
 
 ## Product - Mutation to create a product
 
-- Query: `mutation Mutation($name: String, $price: Float, $qty: Int) {
+- Query: 
+
+`mutation Mutation($name: String, $price: Float, $qty: Int) {
   createProduct(name: "new product", price: 12, qty: 11) {
     name
     price
@@ -289,7 +299,8 @@ List of all services
 
 ## Order - Mutation to create an order
 
-- Query: `mutation Mutation($name: String, $price: Float, $qty: Int, $customerId: ID, $deliveryDate: String, $products: [ID], $orderQty2: Int, $totalPrice: Float) {
+- Query: 
+`mutation Mutation($name: String, $price: Float, $qty: Int, $customerId: ID, $deliveryDate: String, $products: [ID], $orderQty2: Int, $totalPrice: Float) {
   order(customerId: "123e4567-e89b-12d3-a456-426655440000", deliveryDate: "2021-07-10", products: ["36770a0b-81bf-4d1a-bf50-1defdfa53130"], qty: 2, totalPrice: 12) {
     deliveryDate
     orderId

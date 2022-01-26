@@ -4,6 +4,7 @@ import {
   } from "../../utils/error-handler";
   import CustomerOperations from "../../dao/operations/customer";
   import { Customer } from "../../../src/dao/models/customer";
+import Logger from "../../utils/logger";
   
   class CustomerHandlers {
     public async checkCustomerId(customerId: string) {
@@ -13,13 +14,13 @@ import {
   
         if (!customer) {
 
-          console.error("Customer is not found!!!!");
+          Logger.error("Customer is not found!!!!");
   
           throw NotFoundError("Customer does not exist!!!");
 
         } else if (customer && (!customer.emailId || !customer.phone)) {
             
-          console.error("Customer is not found!!!!");
+          Logger.error("Customer is not found!!!!");
   
           throw CustomerEmailOrPhoneDoesnNotExist(
             "Customer doesnot have email or phone number!!!"
@@ -28,7 +29,7 @@ import {
           return customer;
         }
       } catch (ex) {
-        console.error(
+        Logger.error(
           "Exception while checking checkCustomerId!!!",
           ex
         );
