@@ -1,0 +1,75 @@
+schema
+  @core(feature: "https://specs.apollo.dev/core/v0.2"),
+  @core(feature: "https://specs.apollo.dev/join/v0.1", for: EXECUTION)
+{
+  query: Query
+  mutation: Mutation
+}
+
+directive @core(as: String, feature: String!, for: core__Purpose) repeatable on SCHEMA
+
+directive @join__field(graph: join__Graph, provides: join__FieldSet, requires: join__FieldSet) on FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__owner(graph: join__Graph!) on INTERFACE | OBJECT
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on INTERFACE | OBJECT
+
+type Customer {
+  address: String
+  customerId: ID!
+  emailId: String
+  name: String
+  phone: String
+}
+
+type Mutation {
+  createProduct(name: String, price: Float, qty: Int): Product @join__field(graph: PRODUCT)
+  order(customerId: ID, deliveryDate: String, products: [ID], qty: Int, totalPrice: Float): Order @join__field(graph: ORDER)
+}
+
+type Order
+  @join__owner(graph: ORDER)
+  @join__type(graph: ORDER, key: "orderId")
+{
+  customer: Customer @join__field(graph: ORDER)
+  deliveryDate: String @join__field(graph: ORDER)
+  orderId: ID! @join__field(graph: ORDER)
+  products: [Product] @join__field(graph: ORDER)
+  totalPrice: Float @join__field(graph: ORDER)
+}
+
+type Product {
+  name: String
+  price: Float
+  prodId: ID!
+  qty: Int
+}
+
+type Query {
+  allProducts: [Product] @join__field(graph: PRODUCT)
+  getAllCustomers: [Customer] @join__field(graph: CUSTOMER)
+  order(orderId: ID!): Order @join__field(graph: ORDER)
+  product(prodId: ID!): Product @join__field(graph: PRODUCT)
+}
+
+enum core__Purpose {
+  """
+  `EXECUTION` features provide metadata necessary to for operation execution.
+  """
+  EXECUTION
+
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  CUSTOMER @join__graph(name: "customer" url: "http://customer:4000/graphql")
+  ORDER @join__graph(name: "order" url: "http://order:4000/graphql")
+  PRODUCT @join__graph(name: "product" url: "http://product:4000/graphql")
+}

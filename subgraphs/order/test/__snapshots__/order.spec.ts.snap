@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order subgraph Create a new order 1`] = `
+Object {
+  "data": Object {
+    "order": Object {
+      "customer": Object {
+        "emailId": "karthick.taker@gmail.com",
+        "name": "Karthick",
+      },
+      "orderId": "69005202-4dcf-4169-86f4-69a8e0aeb6ff",
+      "products": Array [
+        Object {
+          "name": "Type C Cable",
+          "price": 12,
+        },
+      ],
+      "totalPrice": 12,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Order subgraph Gets the order 1`] = `
+Object {
+  "data": Object {
+    "order": Object {
+      "customer": Object {
+        "emailId": "karthick.taker@gmail.com",
+        "name": "Karthick",
+        "phone": "1234234",
+      },
+      "deliveryDate": "1643120622000",
+      "orderId": "69005202-4dcf-4169-86f4-69a8e0aeb6ff",
+      "products": Array [
+        Object {
+          "name": "Type C Cable",
+          "price": 12,
+        },
+        Object {
+          "name": "Type C Charger",
+          "price": 13,
+        },
+      ],
+      "totalPrice": 25,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

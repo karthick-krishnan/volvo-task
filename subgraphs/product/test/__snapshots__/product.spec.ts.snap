@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products subgraph Creates new product 1`] = `
+Object {
+  "data": Object {
+    "createProduct": Object {
+      "name": "Ipad Pro",
+      "price": 999.12,
+      "prodId": "a44b434e-7a16-11ec-90d6-0242ac120003",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Products subgraph Gets all the products 1`] = `
+Object {
+  "data": Object {
+    "allProducts": Array [
+      Object {
+        "name": "MacBook Pro",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Products subgraph Gets products based on the id 1`] = `
+Object {
+  "data": Object {
+    "product": Object {
+      "name": "MacBook Pro",
+      "prodId": "607ac5b8-7a16-11ec-90d6-0242ac120003",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

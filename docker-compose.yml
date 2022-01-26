@@ -1,0 +1,20 @@
+version: '3'
+services:
+  router:
+    container_name: router
+    build: ./router
+    environment:
+      - APOLLO_SCHEMA_CONFIG_EMBEDDED=true
+    volumes:
+      - ./supergraph.graphql:/etc/config/supergraph.graphql
+    ports:
+      - "4000:4000"
+  product:
+    container_name: product
+    build: ./subgraphs/product
+  order:
+    container_name: order
+    build: ./subgraphs/order
+  customer:
+    container_name: customer
+    build: ./subgraphs/customer

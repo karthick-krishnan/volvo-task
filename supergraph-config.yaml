@@ -1,0 +1,13 @@
+subgraphs:
+  customer:
+    routing_url: http://customer:4000/graphql
+    schema:
+      file: ./subgraphs/customer/src/customer.graphql
+  order:
+    routing_url: http://order:4000/graphql
+    schema:
+      file: ./subgraphs/order/src/order.graphql
+  product:
+    routing_url: http://product:4000/graphql
+    schema:
+      file: ./subgraphs/product/src/product.graphql

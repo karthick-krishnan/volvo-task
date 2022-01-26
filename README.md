@@ -39,7 +39,7 @@ To get Started please follow the below Requirements
 [requirements](#requirements), you can follow these steps to get the project up and running:
 
 ```window
-$ git clone https://github.com/karthick-krishnan/Viaplay-sample-task.git
+$ git clone git@github.com:karthick-krishnan/volvo-task.git
 $ docker-compose up --build -d                  # Builds, deploy and create containers for each microservices 
 $ docker-compose down                           # Turns down all the microservers
 $ docker-compose logs                           # check all the docker compose logs

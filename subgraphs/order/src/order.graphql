@@ -1,0 +1,31 @@
+type Customer {
+  customerId: ID!
+  name: String
+  emailId: String
+  phone: String
+  address: String
+}
+
+type Product {
+  prodId: ID!
+  name: String
+  qty: Int
+  price: Float
+}
+
+
+type Order @key(fields: "orderId") {
+  orderId: ID!
+  customer: Customer
+  products: [Product]
+  deliveryDate: String
+  totalPrice: Float
+}
+
+extend type Query {
+  order(orderId: ID!): Order
+}
+
+extend type Mutation {
+   order(customerId: ID, products: [ID], deliveryDate: String, totalPrice: Float, qty: Int): Order
+}
